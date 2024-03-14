@@ -3,14 +3,18 @@ const bodyParser=require("body-parser")
 const port=3000;
 const app=express();
 app.use(bodyParser.json())
+ 
+function sum(a,b){
+    var ans=a+b;
+    return ans;
+  }
+
 
 app.get('/', (req,res)=>{
-    console.log(req.body)
-    setTimeout(function(){
-        res.send("HEllo world")
-    },5000)
-    console.log("hello.....")
-    
+    const a=parseInt(req.query.a);
+    const b=parseInt(req.query.b);
+    const ans=sum(a,b)
+    res.send("Our Addition is -> "+ans.toString())
 })
  
 app.listen(3000,()=>{
